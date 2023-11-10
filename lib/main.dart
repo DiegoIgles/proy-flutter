@@ -2,9 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:proy1/controller/AuthController.dart';
 import 'package:proy1/pages/pagina02.dart';
 import 'package:proy1/pages/register.dart';
+import 'package:provider/provider.dart';
+import 'providers/UserProvider.dart'; // Importa el UserProvider
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+        MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+        // Otros ChangeNotifierProviders según tus necesidades
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
